@@ -1,70 +1,59 @@
-# Password Strength Checker and Security Awareness Tool
+# Password Strength Checker & Security Awareness Tool
 
-**Information Security Final Project — South East European University**
-**Option B: Security Application / Educational Prototype**
+A client-side web application for studying password-strength concepts and giving users immediate feedback about password composition.
 
-A beginner-friendly, fully client-side tool that checks password strength in real time, explains weaknesses, and educates users about security risks.
+The project runs entirely in the browser and does not send entered passwords to a server.
 
-## Quick Links
+## What I Implemented
 
-- Open `index.html` in any browser to run the tool
-- See `report.md` for the complete academic report, annotated bibliography, presentation slides, and submission checklist
+* Real-time password analysis
+* Checks for length, uppercase letters, lowercase letters, numbers, and special characters
+* A score from 0 to 100 based on the implemented requirements
+* Weak, medium, and strong UI states
+* Feedback for missing password requirements
+* Checks for selected common weak password patterns
+* Password entropy estimation
+* Educational crack-time estimates
+* Password visibility controls
+* A 16-character password generator
+* Fisher-Yates shuffling for generated characters
+* Accessible progress information and DOM updates
 
-## Features
+## What I Learned
 
-- **Real-Time Strength Meter** — colored progress bar (Weak/Medium/Strong) with score 0–100
-- **Requirements Checklist** — CSS-only ✔/✘ indicators for 5 criteria (length, uppercase, lowercase, numbers, special chars)
-- **Security Feedback Messages** — specific, actionable suggestions per missing requirement
-- **Password Visibility Toggle** — SVG eye icon, switches input type
-- **Estimated Crack Time** — educational heuristic ("instantly" → "centuries") with entropy display in bits
-- **Random Password Generator** — Fisher-Yates shuffled, 16-char, guaranteed character diversity
-- **Educational Tips Section** — 6 numbered cards: brute-force, credential stuffing, MFA, password managers
-- **Fully Client-Side** — no data transmitted or stored; safe to test real passwords
+This project helped me understand that password strength cannot be described by one simple rule.
 
-## Tech Stack
+I learned how password length and possible character sets relate to entropy and why increasing the search space makes brute-force guessing harder.
 
-| Layer | Technology |
-|---|---|
-| Structure | HTML5 — semantic, ARIA-labeled, keyboard-accessible |
-| Styling | CSS3 — custom properties, flexbox/grid, responsive, CSS-only iconography |
-| Logic | Vanilla JavaScript — DOM manipulation, regex validation, entropy formula |
-| External | None — zero dependencies, zero network requests |
+I also learned the difference between an educational strength estimate and a real security guarantee. The crack-time values in this application are heuristics. They do not measure the speed of a real password-cracking system.
 
-## How to Run
+Keeping the entire checker client-side also taught me a basic data-minimization principle: sensitive input does not need to leave the browser when the calculation can happen locally.
 
-1. Download the project
-2. Open `index.html` in any browser (Chrome, Firefox, Edge, Safari)
-3. No server, no install, no `npm` required
+From the JavaScript side, I practiced regular expressions, DOM events, dynamic UI updates, array operations, and the Fisher-Yates shuffle.
 
-## Project Structure
+## What This Project Demonstrates
 
-```
-├── index.html          Main page (SVG icons, glass-morphism cards)
-├── style.css           Design system: dark theme, responsive grid, animations
-├── script.js           Password analysis, scoring, generator, entropy calculation
-├── README.md           This file
-└── report.md           Full academic report + annotated bibliography + slides
-```
+* Basic password-security concepts
+* Password entropy concepts
+* Regular expressions
+* Client-side input analysis
+* DOM manipulation
+* Event handling
+* User feedback based on validation rules
+* Fisher-Yates shuffling
 
-## Security Concepts Demonstrated
+## Tech Used
 
-- **Authentication** — password as "something you know"; strength directly impacts authentication security
-- **Confidentiality** — strong passwords prevent unauthorized data access
-- **Risk Management** — scoring/entropy helps users assess and reduce their password risk
-- **Data Minimization** — client-side architecture means zero data collection or transmission
+* HTML
+* CSS
+* Vanilla JavaScript
 
-## Scoring System
+## Important Limitations
 
-| Criterion | Points |
-|---|---|
-| Length >= 8 characters | +20 |
-| Contains uppercase (A–Z) | +20 |
-| Contains lowercase (a–z) | +20 |
-| Contains number (0–9) | +20 |
-| Contains special character | +20 |
-| **Maximum** | **100** |
+The crack-time display is an educational estimate, not a cryptographic measurement.
 
-- **0–39:** Weak (red)
-- **40–69:** Medium (amber)
-- **70–100:** Strong (green)
-# Information-Security-FinalProject
+The password generator currently uses `Math.random()`. That makes it suitable for demonstrating the generation logic, but it should use the Web Crypto API for security-sensitive password generation.
+
+## Running the Project
+
+Open `index.html` in a browser. No package installation or server is required.
